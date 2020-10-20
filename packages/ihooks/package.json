@@ -1,0 +1,16 @@
+{
+  "name": "ihooks",
+  "version": "1.0.0",
+  "description": "react hook lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "hook",
+    "ihooks"
+  ],
+  "author": "ximoThorn",
+  "license": "ISC"
+}
