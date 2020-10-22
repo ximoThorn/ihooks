@@ -1,5 +1,5 @@
-import { useaaaa } from './hooks/useaaa'
+import useDebounce from './hooks/useDebounce/index'
 
 export {
-  useaaaa
+  useDebounce
 }

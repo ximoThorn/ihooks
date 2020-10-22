@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button } from 'antd'
-import { useaaaa } from 'ihooks'
+import { useDebounce } from 'ihooks'
 
-const Aaaa = () => {
+const IuseDebounce = () => {
   const handleClick = () => {
-    useaaaa()
+    useDebounce()
   }
 
   return (
@@ -14,4 +14,4 @@ const Aaaa = () => {
   )
 }
 
-export default Aaaa
+export default IuseDebounce

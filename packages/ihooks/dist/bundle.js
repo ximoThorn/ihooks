@@ -1,5 +1,5 @@
-const useaaaa = () => {
-  console.log('aaass1111222asdasdsa121212');
+const useDebounce = () => {
+  console.log('useDebounce');
 };
 
-export { useaaaa };
+export { useDebounce };
