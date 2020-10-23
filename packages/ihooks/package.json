@@ -22,7 +22,8 @@
     "url": "https://github.com/ximoThorn/ihooks/issues"
   },
   "homepage": "https://github.com/ximoThorn/ihooks#readme",
-  "devDependencies": {
-    "rollup-plugin-serve": "^1.0.4"
+  "peerDependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   }
 }

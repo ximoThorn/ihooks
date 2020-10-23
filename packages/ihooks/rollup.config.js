@@ -1,4 +1,3 @@
-import serve from 'rollup-plugin-serve'
 
 export default {
   input: 'src/main.js',
@@ -6,5 +5,8 @@ export default {
     file: 'dist/bundle.js',
     format: 'esm'
   },
-  plugin: [serve('src')]
+  external: ['react'],
+  watch: {
+    exclude: 'node_modules/**'
+  }
 }

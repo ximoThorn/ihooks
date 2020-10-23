@@ -1,0 +1,26 @@
+---
+id: useClickOutside
+title: useClickOutside
+---
+
+点击目标dom外的事件处理hook
+
+## 代码演示
+### 基础用法
+
+import FrameWrap from '../components/frame-wrap'
+import IuseClickOutSide from '../components/use-click-outside/useClickOutside'
+const useClickOutSideCode = require('!!raw-loader!../components/use-click-outside/useClickOutside')
+const dsc = '点击目标dom外时的事件处理回调，请点击按钮内外查看不同的效果'
+
+<FrameWrap dsc={dsc}
+  example={<IuseClickOutSide />}
+  code={useClickOutSideCode.default} />
+
+
+### Params
+
+import { Table } from 'antd'
+import { dataParams, paramsColumns } from '../components/use-click-outside/config'
+
+<Table dataSource={dataParams} columns={paramsColumns} pagination={false} />

@@ -8,6 +8,10 @@ module.exports = {
   organizationName: 'ximoThorn', // Usually your GitHub org/user name.
   projectName: 'ihooks', // Usually your repo name.
   themeConfig: {
+    colorMode: { // 默认主题preset-classic主题配置
+      defaultMode: 'light', // 默认浅色主题
+      disableSwitch: true, // 关闭白天和黑夜切换功能
+    },
     navbar: {
       title: 'ihooks',
       logo: {
@@ -71,13 +75,14 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/ximoThorn/ihooks',
             },
           ],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
+    sidebarCollapsible: false, // 是否打开菜单可折叠功能
   },
   presets: [
     [
@@ -87,14 +92,14 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/ximoThorn/ihooks/packages/website/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
-        },
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   editUrl:
+        //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },

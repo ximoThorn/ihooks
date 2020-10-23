@@ -1,5 +1,6 @@
 module.exports = {
   someSidebar: {
-    sideEffect: ['useDebounce'],
+    sideEffect: ['useDebounce', 'useThrottle'],
+    dom: ['useClickOutside']
   },
 };

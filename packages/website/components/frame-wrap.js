@@ -9,8 +9,8 @@ import {
 
 const FrameWrap = (props = {}) => {
   const {
-    title = 'title',
-    dsc = 'xxxxxxx',
+    title = '基础用法',
+    dsc = '',
     example,
     code = ''
   } = props
@@ -38,3 +38,4 @@ const FrameWrap = (props = {}) => {
 }
 
 export default FrameWrap
+

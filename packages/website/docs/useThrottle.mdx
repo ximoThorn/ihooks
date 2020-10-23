@@ -1,0 +1,33 @@
+---
+id: useThrottle
+title: useThrottle
+---
+
+用来处理节流函数的hook
+
+## 代码演示
+### 基础用法
+
+import FrameWrap from '../components/frame-wrap'
+import IuseThrottle from '../components/use-throttle/useThrottle'
+const useThrottleCode = require('!!raw-loader!../components/use-throttle/useThrottle')
+const dsc = '频繁调用 run，但每隔1000ms只执行一次相关函数'
+
+<FrameWrap dsc={dsc}
+  example={<IuseThrottle />}
+  code={useThrottleCode.default} />
+
+
+### Params
+
+import { Table } from 'antd'
+import { dataParams, paramsColumns } from '../components/use-throttle/config'
+
+<Table dataSource={dataParams} columns={paramsColumns} pagination={false} />
+
+### Result
+
+import { dataResult, resultColumns } from '../components/use-throttle/config'
+
+<Table dataSource={dataResult} columns={resultColumns} pagination={false} />
+
