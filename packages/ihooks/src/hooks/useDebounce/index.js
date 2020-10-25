@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce'
+import debounce from 'lodash/debounce'
 import { useRef, useMemo } from 'react'
 
 const useDebounce = (fun = function() {}, wait = 300, options = {}) => {

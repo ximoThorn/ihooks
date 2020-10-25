@@ -1,0 +1,35 @@
+---
+id: useEventEmitter
+title: useEventEmitter
+---
+
+在多个组件之间进行事件通知有时会很繁琐，借助 EventEmitter ，可以让这一过程变得更加简单。
+在组件中调用 useEventEmitter 可以获得一个 EventEmitter 的实例：
+```js
+// 组件多次渲染时，并不会重复创建实例
+const $eventEmitter = useEventEmitter()
+```
+通过 props 或者 Context ，可以将 $eventEmitter 共享给其他组件。然后在其他组件中，
+可以调用 EventEmitter 的 emit 方法，推送一个事件，或是调用 $on/$once 方法，订阅事件。
+或是调用 $off 方法，取消订阅事件。
+> $on会在组件销毁时，取消订阅
+
+## 代码演示
+### 基础用法
+
+import FrameWrap from '../components/frame-wrap'
+import IuseEventEmitter from '../components/use-event-emitter/useEventEmitter'
+const useEventEmitterCode = require('!!raw-loader!../components/use-event-emitter/useEventEmitter')
+const dsc = '频繁调用 run，但每隔1000ms只执行一次相关函数'
+
+<FrameWrap dsc={dsc}
+  example={<IuseEventEmitter />}
+  code={useEventEmitterCode.default} />
+
+
+### Result
+import { Table } from 'antd'
+
+import { dataSource, dataColumns } from '../components/use-event-emitter/config'
+
+<Table dataSource={dataSource} columns={dataColumns} pagination={false} />

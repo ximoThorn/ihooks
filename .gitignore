@@ -1,9 +1,9 @@
-# Dependencies
+
 /node_modules
 /dist
-
-# Production
 /build
+/packages/ihooks/dist
+/packages/websit/build
 
 # Generated files
 .docusaurus

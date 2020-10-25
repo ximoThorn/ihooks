@@ -1,9 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { getTargetDom } from '../../utils/index'
 
-const defaultEventName = 'click'
-
-const useClickOutside = (cb = function() {}, target, eventName = defaultEventName) => {
+const useClickOutside = (cb = function() {}, target, eventName = 'click') => {
   let onClick = useRef()
   onClick.current = cb
 
