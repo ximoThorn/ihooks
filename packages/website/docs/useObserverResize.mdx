@@ -1,0 +1,33 @@
+---
+id: useObserverResize
+title: useObserverResize
+---
+
+监听dom节点尺寸变化的hook
+
+
+## 代码演示
+### 基础用法
+
+import FrameWrap from '../components/frame-wrap'
+import IuseObserverResize from '../components/use-observer-resize/useObserverResize'
+const useObserverResizeCode = require('!!raw-loader!../components/use-observer-resize/useObserverResize')
+const dsc = '实时监听目标dom节点的变化'
+
+<FrameWrap dsc={dsc}
+  example={<IuseObserverResize />}
+  code={useObserverResizeCode.default} />
+
+
+### Params
+
+import { Table } from 'antd'
+import { paramsSource, paramsColumns } from '../components/use-observer-resize/config'
+
+<Table dataSource={paramsSource} columns={paramsColumns} pagination={false} />
+
+### Result
+
+import { resultSource, resultColumns } from '../components/use-observer-resize/config'
+
+<Table dataSource={resultSource} columns={resultColumns} pagination={false} />
