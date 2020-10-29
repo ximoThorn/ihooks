@@ -1,7 +1,7 @@
 module.exports = {
   someSidebar: {
     sideEffect: ['useDebounce', 'useThrottle'],
-    dom: ['useClickOutside', 'useObserverResize'],
+    dom: ['useClickOutside', 'useObserverResize', 'useScrollToBottom'],
     event: ['useEventEmitter']
   },
 };
