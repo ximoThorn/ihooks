@@ -19,6 +19,13 @@ export const paramsSource = [
     type: 'number',
     default: '50',
     key: '3'
+  },
+  {
+    name: 'once',
+    dsc: '在距离底部低于distance期间内，是否只执行一次回调',
+    type: 'boolean',
+    default: 'false',
+    key: '4'
   }
 ]
 

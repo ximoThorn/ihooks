@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { Button, message } from 'antd'
 import { useObserverResize } from 'ihooks'
 
@@ -7,7 +7,7 @@ const IuseObserverResize = () => {
 
   const handleClick = () => {
     const width = targetDomRef.current.clientWidth
-    targetDomRef.current.style.width = `${width - 1}px`
+    targetDomRef.current.style.width = `${width - 2}px`
   }
 
   const result = useObserverResize(targetDomRef, ({ width, height }) => {
@@ -15,7 +15,7 @@ const IuseObserverResize = () => {
   })
 
   return (
-    <div ref={targetDomRef}>
+    <div ref={targetDomRef} style={{border: '1px solid #f0f0f0', padding: 12}}>
       <Button onClick={handleClick}>click me</Button>
       <p style={{margin: '20px 0'}}>
         尝试点击按钮，去改变目标div的尺寸

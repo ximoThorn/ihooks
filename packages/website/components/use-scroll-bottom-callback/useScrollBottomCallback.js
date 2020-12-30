@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { message } from 'antd'
-import { useScrollToBottom, useThrottle } from 'ihooks'
+import { useScrollBottomCallback, useThrottle } from 'ihooks'
 
-const IuseScrollToBottom = () => {
+const IuseScrollBottomCallback = () => {
   const targetDom = useRef()
   const [list] = useState(() => Array(20).fill())
 
@@ -11,7 +11,7 @@ const IuseScrollToBottom = () => {
     console.log(e)
   }, 500)
 
-  useScrollToBottom(targetDom, handler)
+  useScrollBottomCallback(targetDom, handler, undefined, true)
 
   return (
     <div ref={targetDom} style={{maxHeight: 300, overflowY: 'scroll'}}>
@@ -28,4 +28,4 @@ const IuseScrollToBottom = () => {
   )
 }
 
-export default IuseScrollToBottom
+export default IuseScrollBottomCallback

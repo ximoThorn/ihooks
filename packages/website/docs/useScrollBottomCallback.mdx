@@ -1,0 +1,27 @@
+---
+id: useScrollBottomCallback
+title: useScrollBottomCallback
+---
+
+监听某个dom节点滚动到底部的hook
+
+
+## 代码演示
+### 基础用法
+
+import FrameWrap from '../components/frame-wrap'
+import IuseScrollBottomCallback from '../components/use-scroll-bottom-callback/useScrollBottomCallback'
+const useScrollBottomCallbackCode = require('!!raw-loader!../components/use-scroll-bottom-callback/useScrollBottomCallback')
+const dsc = '一段距离的滚动是连续性的，回调函数可能需要与useThrottle结合一起使用'
+
+<FrameWrap dsc={dsc}
+  example={<IuseScrollBottomCallback />}
+  code={useScrollBottomCallbackCode.default} />
+
+
+### Params
+
+import { Table } from 'antd'
+import { paramsSource, paramsColumns } from '../components/use-scroll-bottom-callback/config'
+
+<Table dataSource={paramsSource} columns={paramsColumns} pagination={false} />

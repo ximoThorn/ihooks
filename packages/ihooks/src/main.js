@@ -3,7 +3,7 @@ import useThrottle from './hooks/useThrottle/index'
 import useClickOutside from './hooks/useClickOutside/index'
 import useEventEmitter from './hooks/useEventEmitter/index'
 import useObserverResize from './hooks/useObserverResize/index'
-import useScrollToBottom from './hooks/useScrollToBottom/index'
+import useScrollBottomCallback from './hooks/useScrollBottomCallback/index'
 
 export {
   useDebounce,
@@ -11,5 +11,5 @@ export {
   useClickOutside,
   useEventEmitter,
   useObserverResize,
-  useScrollToBottom
+  useScrollBottomCallback
 }
