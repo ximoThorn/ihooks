@@ -1,0 +1,32 @@
+---
+id: useInterval
+title: useInterval
+---
+
+在hook中用 setInterval 时，可能有时候总会偏离自己想要的效果，useInterval一个更加友好的计时器api，帮助你更好处理副作用
+
+
+## 代码演示
+### 基础用法
+
+import FrameWrap from '../components/frame-wrap'
+import IuseInterval from '../components/use-interval/useInterval'
+const useIntervalCode = require('!!raw-loader!../components/use-interval/useInterval')
+const dsc = ''
+
+<FrameWrap dsc={dsc}
+  example={<IuseInterval />}
+  code={useIntervalCode.default} />
+
+
+### Params
+
+import { Table } from 'antd'
+import { paramsSource, paramsColumns, resultSource,  resultColumns} from '../components/use-interval/config'
+
+<Table dataSource={paramsSource} columns={paramsColumns} pagination={false} />
+
+### Result
+
+<Table dataSource={resultSource} columns={resultColumns} pagination={false} />
+

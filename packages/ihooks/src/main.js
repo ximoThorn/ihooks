@@ -4,6 +4,7 @@ import useClickOutside from './hooks/useClickOutside/index'
 import useEventEmitter from './hooks/useEventEmitter/index'
 import useObserverResize from './hooks/useObserverResize/index'
 import useScrollBottomCallback from './hooks/useScrollBottomCallback/index'
+import useInterval from './hooks/useInterval/index'
 
 export {
   useDebounce,
@@ -11,5 +12,6 @@ export {
   useClickOutside,
   useEventEmitter,
   useObserverResize,
-  useScrollBottomCallback
+  useScrollBottomCallback,
+  useInterval
 }
