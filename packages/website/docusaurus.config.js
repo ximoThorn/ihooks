@@ -7,6 +7,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'ximoThorn', // Usually your GitHub org/user name.
   projectName: 'ihooks', // Usually your repo name.
+  onBrokenLinks: 'ignore', // 关闭由断开的链接引起的打包报错
   themeConfig: {
     colorMode: { // 默认主题preset-classic主题配置
       defaultMode: 'light', // 默认浅色主题
