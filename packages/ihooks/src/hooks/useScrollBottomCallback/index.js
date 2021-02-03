@@ -2,8 +2,10 @@ import { useEffect, useRef } from 'react'
 import { getTargetDom } from '../../utils/index'
 
 const useScrollBottomCallback = (targetDom, cb, distance = 50, once = false) => {
-  const callbackRef = useRef(cb)
-  const isOnce = useRef(once)
+  const callbackRef = useRef()
+  const isOnce = useRef()
+  callbackRef.current = cb
+  isOnce.current = once
   const flag = useRef(false)
 
   useEffect(() => {
