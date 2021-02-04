@@ -28,6 +28,11 @@ module.exports = {
         },
         {to: 'blog', label: 'Blog', position: 'left'},
         {
+          href: 'https://doranui.github.io',
+          label: 'doranUI',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/ximoThorn/ihooks',
           label: 'GitHub',
           position: 'right',
@@ -77,6 +82,10 @@ module.exports = {
             {
               label: 'GitHub',
               href: 'https://github.com/ximoThorn/ihooks',
+            },
+            {
+              label: 'doranUI',
+              href: 'https://doranui.github.io',
             },
           ],
         },
