@@ -70,13 +70,119 @@ react使用链表，将每一个VirtualDom节点及其内部所有子（不是�
 ```js
 let fiber = {
   tag: '', //当前节点类型，文本还是dom
+  key: 'ROOT', // 唯一标识
   type: '', // 当前元素类型，span、div
+  stateNode: '', // fiber对应的node节点
+  flag: '', // placement等，副作用类型，例如： 增删改查
+  firstEffect: null, 
+  lastEffect: null
   // ...
   // 三个指针
   child: {}, // 指向当前第一个子fiber
   sibling: {}, // 指向当前紧挨着的兄弟fiber
   return: {}, // 指向当前的父fiber
 }
+```
+
+## react的构建过程
+```jsx
+  // 浏览器空闲时间执行
+  requestIdleCallback(workLoop) //react中是通过requestAnimationFrame和MessageChannel实现的
+
+  let rootFiber = {
+    ...
+  }
+
+  let workInProgress = rootFiber //当前正在执行的工作单元（fiber）
+  function workLoop(deadLine) { // deadLine每帧剩余时间对象
+    while (workInProgress && deadLine.timeRemaining() > 1) {
+      workInProgress = performUnitOfWork(workInProgress) // 每个任务单元执行完毕后返回下一个要执行的任务单元
+    }
+    // 提交阶段
+    commitRoot(rootFiber)
+  }
+
+
+  function performUnitOfWork (workInProgress) {
+    beginWork(workInProgress)  // 创建子fiber树
+
+    if (workInProgress.child) {
+      return workInProgress.child // 优先构建child
+    }
+
+    while (workInProgress) {
+      completeUnitWork(workInProgress) // 当前工作单元完成构建，并生成dom
+      if (workInProgress.sibling) {
+        return workInProgress.sibling // 没有child，构建sibling
+      }
+
+      workInProgress = workInProgress.return
+      // 最后没有父元素（root）退出循环
+    }
+  }
+
+  // 开始创建子Fiber树🌲
+  function beginWork (workInProgress) {
+    let nextChildren = workInProgress.props.children
+    return reconcileChildren(workInProgress, nextChildren)
+  }
+
+
+  function reconcileChildren (returnFiber, nextChildren) {
+    // 根据VDom生成fiber的同时并构建fiber链(就是给fiber的child，sibline, return属性赋值)
+    for (let i = 0; i < nextChildren.length; i++) {
+      let newFiber = createFiber(nextChildren[i])
+      // ...
+    }
+  }
+
+  // 创建fiber
+  function createFiber(element) {
+    return {
+      tag: TAG_HOST,
+      type: element.type,
+      props: element.props,
+      key: element.key,
+      // ...
+    }
+  }
+
+
+  function completeUnitWork (workInProgress) {
+    switch(workInProgress.tag) {
+      case TAG_HOST:
+        createStateNode(workInProgress) // 根据fiber生成真实dom节点
+      //...
+    }
+
+    // 完成时判断有没有对应的dom操作，有的话添加到副作用链表中
+    makeEffectList(workInProgress)
+  }
+
+
+  function makeEffectList (workInProgress) {
+    // 根据每个fiber的firstEffect和lastEffect以及flags
+    // 归并fiber树中各fiber的副作用，形成副作用链
+    // firstEffect -> nextEffect -> ... -> lastEffect
+  }
+
+
+  function commitRoot (rootFiber) {
+    let currentEffect = rootFiber.firstEffect
+    while (currentEffect) {
+      switch(currentEffect.flags) { // 副作用类型
+        case Placement:
+        commitPlacemen(currentEffect) // 向父dom添加子dom
+      }
+      currentEffect = currentEffect.nextEffect
+    }
+  }
+
+  function commitPlacemen (currentEffect) {
+    let parent = currentEffect.return.stateNode
+    parent.appendChild(currentEffect.stateNode)
+  }
+
 ```
 
 ## 总结
