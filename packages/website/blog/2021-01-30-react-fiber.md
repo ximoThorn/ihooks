@@ -85,7 +85,7 @@ let fiber = {
 ```
 
 ## react的构建过程
-```jsx
+```js
   // 浏览器空闲时间执行
   requestIdleCallback(workLoop) //react中是通过requestAnimationFrame和MessageChannel实现的
 
