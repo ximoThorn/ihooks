@@ -8,9 +8,9 @@ tags: [react, setState]
 
 # react setState过程
 
->setState是挂在react的Component组件的原型上，这里记录下setState的执行过程，包扩何时表现为异步，何时表现为同步
+>setState是挂在react的Component组件的原型上，这里记录下setState的执行过程，包括何时表现为异步，何时表现为同步
 
-## 第一步：窥探Componen组件：
+## 窥探Componen组件：
 
 ```js
 
@@ -132,7 +132,7 @@ scheduleUpdateOnFiber函数总结：
 >**注：在react合成事件中会默认执行batchedUpdates()函数进行批量（异步）更新，执行完后将isBatchedUpdates置为false，这也就解释了放在setTimeout中的setState会同步更新**
 
 
-### performSyncWorkOnRoot函数
+## performSyncWorkOnRoot函数
 
 performSyncWorkOnRoot函数是真正的渲染任务了
 
