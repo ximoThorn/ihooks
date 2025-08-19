@@ -26,7 +26,7 @@ function useState(initialState) {
     hook = {
       memoizedState: initialstate,
       next: null,
-      queue: null, // 每个state hooks内部有一个循环链表储存了每次通过setXxx更新的最新值
+      queue: null, // 每个useState hook内部有一个循环链表储存了每次通过setXxx更新的最新值
       pending: null
     }
     
