@@ -10,7 +10,6 @@ tags: [react, javascript]
 
 ## useState
 
-
 ```js
 let isMount = true; // false是更新阶段
 let workInProgressHook = null; // 链表指针
