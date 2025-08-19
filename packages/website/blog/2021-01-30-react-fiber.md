@@ -72,10 +72,28 @@ let fiber = {
   tag: '', //当前节点类型，文本还是dom
   key: 'ROOT', // 唯一标识
   type: '', // 当前元素类型，span、div
+
+  // 节点实例(状态)：
+  //      对于宿主组件，这里保存宿主组件的实例, 例如DOM节点。
+  //      对于类组件来说，这里保存类组件的实例
+  //      对于函数组件说，这里为空，因为函数组件没有实例
   stateNode: '', // fiber对应的node节点
-  flag: '', // placement等，副作用类型，例如： 增删改查
-  firstEffect: null, 
-  lastEffect: null
+
+  // 新的、待处理的props
+  pendingProps: null,
+  // 上一次渲染的props
+  memoizedProps: null, // The props used to create the output.
+  // 上一次渲染的组件状态
+  memoizedState: {
+    basicState: null,
+    queue: {}, // 组件构建的Hooks链表
+    ...
+  },
+  updateQueue: null, // 组件构建的effect链表
+
+  // 副作用
+  effectFlag: '', // placement等，副作用类型，例如： 增删改查
+  nextEffect: null, // 和节点关系一样，React 同样使用链表来将所有有副作用的Fiber连接起来
   // ...
   // 三个指针
   child: {}, // 指向当前第一个子fiber
@@ -121,7 +139,7 @@ let fiber = {
     }
   }
 
-  // 开始创建子Fiber树🌲
+  // 开始1、创建子Fiber树🌲；2、创建真实dom树
   function beginWork (workInProgress) {
     let nextChildren = workInProgress.props.children
     return reconcileChildren(workInProgress, nextChildren)
@@ -147,7 +165,9 @@ let fiber = {
     }
   }
 
-
+  //在完成的时候要收集有副作用的fiber,然后组成effect list
+  //每个fiber有两个属性firstEffect:指向第一个有副作用的子fiber lastEffect指向最后一个有副作用子fiber
+  //中间的用nextEffect做成一个单链表
   function completeUnitWork (workInProgress) {
     switch(workInProgress.tag) {
       case TAG_HOST:
@@ -188,7 +208,7 @@ let fiber = {
 ## 总结
 react将jsx经过createElement处理形成虚拟dom节点后的进行渲染，主要分为两个阶段：
 diff阶段和commit阶段：
-在diff阶段进行新旧虚拟dom对比，进行更新，增量或者删除，并且根据虚拟dom生成fiber树
+在diff阶段进行新旧虚拟dom对比，进行更新，增量或者删除，并且根据虚拟dom生成fiber树和真实dom
 > diff阶段可以暂停，因为diff阶段比较花时间，react会对任务进行拆分
 
 commit阶段进行DOM的更新创建，此阶段不能暂停，需要“一气呵成”
